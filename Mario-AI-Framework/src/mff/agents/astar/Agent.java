@@ -18,6 +18,8 @@ public class Agent implements IMarioAgentMFF, IAgentBenchmark, IAgentBenchmarkBa
     private int totalNodesEvaluated = 0;
     private int mostBacktrackedNodes = 0;
 
+    public static int SEARCH_STEPS = 3;
+
     @Override
     public void initialize(MarioForwardModelSlim model) {
         AStarTree.winFound = false;
@@ -33,7 +35,7 @@ public class Agent implements IMarioAgentMFF, IAgentBenchmark, IAgentBenchmarkBa
                 return actionsList.remove(actionsList.size() - 1);
         }
 
-        AStarTree tree = new AStarTree(model, 3);
+        AStarTree tree = new AStarTree(model, SEARCH_STEPS);
         ArrayList<boolean[]> newActionsList = tree.search(timer);
         totalSearchCalls++;
         this.totalNodesEvaluated += tree.nodesEvaluated;

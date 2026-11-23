@@ -22,6 +22,9 @@ public class AStarTree {
     static final float maxMarioSpeedX = 10.91f;
     static float exitTileX;
 
+    public static float TIME_TO_FINISH_WEIGHT = 1.1f;
+    public static int CELL_SIZE = 1;
+
     public int nodesEvaluated = 0;
     public int mostBacktrackedNodes = 0;
     private int farthestReachedX;
@@ -48,7 +51,7 @@ public class AStarTree {
     }
     
     private int getIntState(MarioForwardModelSlim model) {
-    	return getIntState((int) model.getMarioX(), (int) model.getMarioY());
+    	return getIntState((int) model.getMarioX() / CELL_SIZE, (int) model.getMarioY() / CELL_SIZE);
     }
     
     private int getIntState(int x, int y) {
@@ -67,7 +70,7 @@ public class AStarTree {
     
     private float calculateCost(MarioForwardModelSlim nextState, int nodeDepth) {
         float timeToFinish = (exitTileX - nextState.getMarioX()) / maxMarioSpeedX;
-        timeToFinish *= 1.1;
+        timeToFinish *= TIME_TO_FINISH_WEIGHT;
         return nodeDepth + timeToFinish;
 	}
     
