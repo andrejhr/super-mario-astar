@@ -1,12 +1,12 @@
 #!/bin/bash
 #PBS -l walltime=3:00:00
-#PBS -l select=1:ncpus=1:mem=4gb:scratch_local=1gb:cluster=TODO_CLUSTER
-#PBS -e TODO_HOME/job_logs
-#PBS -o TODO_HOME/job_logs
+#PBS -l select=1:ncpus=1:mem=4gb:scratch_local=1gb:cluster=adan
+#PBS -e /storage/praha1/home/hribljaa/job_logs
+#PBS -o /storage/praha1/home/hribljaa/job_logs
 
-DATADIR=TODO_HOME/super-mario-astar
-RESULTDIR=TODO_HOME/results/cellsize
-ROOT=TODO_HOME
+DATADIR=/storage/praha1/home/hribljaa/super-mario-astar
+RESULTDIR=/storage/praha1/home/hribljaa/results/cellsize
+ROOT=/storage/praha1/home/hribljaa
 
 echo "$PBS_JOBID is running on node `hostname -f` in a scratch directory $SCRATCHDIR" >> $ROOT/jobs_info.txt
 
